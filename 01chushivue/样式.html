@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <script type="text/javascript"src="../js/vue.js"></script>
+        <style>
+            .basic{
+                height: 200px;
+                width: 100px;
+                border: 1px solid gold;
+                background-color: aqua;
+            }
+            .happy{
+                height: 200px;
+                width: 40px;
+                border: 1px solid green;
+            }
+            .normal{
+                height: 20px;
+                width: 70px;
+                border: 5px solid rgb(128, 0, 15);
+            }
+            </style>
+    </head>
+    
+    <body>
+        <div id="root">
+            <div class="basic" :class="a" @click="changeYang">{{name}}</div><br/>
+            <!--绑定class样式，适用于：样式的类名不确定，需要动态指定-->
+            <div class="basic" :class="acc" @click="changeYang">{{name}}</div><br/>
+            <!--适用于：要绑定的样式个数不确定、名字也不确定-->
+            <div class="basic" :class="classObj" @click="changeYang">{{name}}</div>
+            <!--适用于：要绑定的样式个数确定、名字也确定,需要动态的绑定-->
+            <div class="basic" :style="styleObj">{{name}}</div>
+            <!--绑定style样式-->
+        </div>
+        <script type="text/javascript">
+            Vue.config.productionTip=false
+            // 创建vue实例
+             const vm=new Vue({
+                el:'#root' , 
+                data(){
+                    return{
+                    name:'崔辰宇',
+                    a:'normal',
+                    acc:['normal','normal','basic'],
+                    classObj:{
+                        normal:false,
+                        happy:false,
+                    },
+                    styleObj:{
+                        fontSize:'40px',
+                        color:'blue',
+                        backgroundColor:'purple'
+                    }
+                }
+            },
+                methods:{
+                    changeYang(){
+                        const arr=['happy','sad','normal']
+                        const b=Math.floor(Math.random()*3)
+                        this.a=arr[b]
+                    }
+                }
+            
+            }) 
+            
+            
+            
+        </script>
+    </body>
+</html>

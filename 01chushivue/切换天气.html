@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>切换天气</title>
+        <script type="text/javascript"src="../js/vue.js"></script>
+    </head>
+    
+    <body>
+        <div id="root">
+            <h1>今天天气{{isWh}}</h1>
+            <h2>a的值是{{numbers.a}}</h2>
+            <button @click="numbers.a++">点我a++</button>
+            <button @click="changeWh">切换天气</button>
+        </div>
+        <script type="text/javascript">
+            Vue.config.productionTip=false
+            // 创建vue实例
+             const vm = new Vue({
+                el:'#root' , 
+                data(){
+                    return{
+                    isHot:true,
+                    numbers:{
+                        a:1,
+                        b:2
+                    }
+                }
+            },
+                methods:{
+                    changeWh(){
+                        this.isHot = ! this.isHot
+                    }
+                },
+                computed:{
+                    isWh(){
+                return  this.isHot?'炎热':'凉爽'
+        }
+    },
+                watch:{
+                    isHot:{
+                        handler(newValue,oldValue){
+
+                        },
+                    'numbers.a':{//只监视对象中的一个内部值
+                        handler(newValue,oldValue){
+
+                        }
+                    },
+                    //简写，if only has one 配置项(handler) ,ifHot()就相当于handler;
+                    /*isHot(newValue,oldValue){
+
+                    }*/
+                    numbers:{
+                        deep:true,//深度监视对象内部值的改变
+                        handler(newValue,oldValue){
+
+}
+                    }
+                        
+                           
+                        },
+                        //immediate:true,、、初始化时让handler调用一下
+                        
+                    }
+                
+            
+            
+            }) 
+        
+            
+            
+        </script>
+    </body>
+</html>

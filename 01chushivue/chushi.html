@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>初始vue</title>
+        <script type="text/javascript"src="../js/vue.js"></script>
+        <style>
+            *{
+                margin-top: 20px;
+            }
+            .demo1{
+                height:50px;
+                background-color: aquamarine;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="root">
+            <h1>hello,{{name}}</h1>
+            <h2>年龄是：{{age}}</h2>
+            <h1>
+                单向数据绑定：
+            </h1>
+            <input type="text" :value="name">
+            <h1>
+                双向数据绑定：
+            </h1>
+            <input type="text" v-model="name">
+
+
+            <button class="demo1"v-on:click.once="showInfo">点我提示信息</button>
+
+
+
+            <button @click.prevent="showInfo">点我提示信息</button>
+            <a v-bind:href='url'>点我去{{place}}</a>
+            <a :href='url'@click.prevent="showInfo">点我去百度2</a>
+        </div>
+        <script type="text/javascript">
+            //v-bind:===:    v-model:value===v-model   v-on === @;
+            //标签体中用插值语法，{{}}；解析标签用指令语法 v-***
+            //v-bind单向数据绑定，数据只能从data刘翔页面；v-model双向数据绑定，只能用在输入类元素，（表单类元素）有value值时才使用；
+            Vue.config.productionTip=false
+            // 创建vue实例
+             const v=new Vue({
+                //el:'#root',//el用于指定当前vue实例为那个容器服务，值通常为css选择器字符串
+                data(){
+                    return{
+                    name:'崔辰宇',
+                    age:'19',
+                    url:'http://www.baidu.cn',
+                    place:'百度'
+                }
+            },
+                methods:{
+                    showInfo(event){
+                        alert('同学你好')
+                    }
+                }
+            
+            }) 
+            console.log(v)
+            v.$mount('#root');
+            
+            
+        </script>
+    </body>
+</html>
