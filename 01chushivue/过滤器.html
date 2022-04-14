@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <script type="text/javascript"src="../vue/vue.js"></script>
+        <script type="text/javascript"src="../vue/dayjs.min.js"></script>
+    </head>
+    
+    <body>
+        <div id="root">
+            <h1></h1>
+            <h3>显示格式化后的时间{{fmtTime}}</h3>
+            <h3>以前的时间{{time}}</h3>
+            <h3>现在是{{time | timeForMater}}</h3>
+            <!-- 可以传参，格式化
+                在filters中第二个添加你的，
+                如果调用时有参数时，用上面的，如果没有用filters写的 
+            filters下面的接收上面的。
+            (局部的过滤器)多个过滤器可以串联
+            插值语法，和v-bind绑定
+            -->
+            <h3></h3>
+        </div>
+        <script type="text/javascript">
+            Vue.config.productionTip=false
+            // 全局过滤器，需要在创建vue实例之前创建
+            // Vue.filter('mySlice',function(value){
+            //     return value.slice(0,4)
+            // })
+            // 创建vue实例
+             const vm = new Vue({
+                el:'#root' , 
+                data(){
+                    return{
+                    time:1685234588625
+                }
+            },
+                methods:{
+                    showInfo(){
+                        alert('ccy')
+                    }
+                },
+                computed:{
+                    fmtTime(){
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+                },
+                watch:{
+
+                },
+                filters:{
+                    timeForMater(a){
+        
+                        return dayjs(a).format('YYYY-MM-DD HH:mm:ss')
+                    
+                }
+                }
+            
+            }) 
+            
+            
+            
+        </script>
+    </body>
+</html>

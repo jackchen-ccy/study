@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <title>初始vue</title>
-        <script type="text/javascript"src="../js/vue.js"></script>
+        <script type="text/javascript"src="../vue/vue.js"></script>
         <style>
             *{
                 margin-top: 20px;
@@ -31,7 +31,7 @@
 
             <button class="demo1"v-on:click.once="showInfo">点我提示信息</button>
 
-
+            
 
             <button @click.prevent="showInfo">点我提示信息</button>
             <a v-bind:href='url'>点我去{{place}}</a>

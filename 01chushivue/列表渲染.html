@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <script type="text/javascript"src="../vue/vue.js"></script>
+    </head>
+    
+    <body>
+        <div id="root">
+            <h1>人员列表</h1> 
+            <input type="text" placeholder="请输入名字"v-model="keyValue">
+            <button @click="sortType=2">年龄升序</button>
+            <button @click="sortType=1">年龄降序</button>
+            <button @click="sortType=0">原序</button>
+           <ul>
+                <li v-for="(p,index) of filPersons" :key="p.id">
+                    {{p.name}}-{{p.age}}-{{p.sex}}
+                </li>
+           </ul>
+        </div>
+        <script type="text/javascript">
+            Vue.config.productionTip=false
+            // 创建vue实例
+             const vm = new Vue({
+                el:'#root' , 
+                data(){
+                    return{
+                        keyValue:"",
+                        persons:[{id:'001',name:'ccy',age:'15',sex:'n'},
+                                {id:'002',name:'sjc',age:'35',sex:'n'},
+                                {id:'003',name:'vy',age:'20',sex:'nv'},
+                                {id:'004',name:'sxp',age:'18',sex:'nv'}],
+                       sortType:0,//等于0原顺序，等于1降序，等于2升序
+                    
+                }
+            },
+                methods:{
+                    showInfo(){
+                        alert('ccy')
+                    }
+                },
+                computed:{
+                    filPersons(){
+                       const arr=this.persons.filter((p)=>{
+                        return p.name.indexOf(this.keyValue)!== -1
+                    })
+                    if(this.sortType){
+                        arr.sort((a,b)=>{
+                            return this.sortType===1 ? b.age-a.age:a.age-b.age
+                        })
+                    }
+                    return arr
+                }
+            },
+                //用watch实现
+                // watch:{
+                //     keyValue:{
+                //         immediate:true,
+                //         handler(zhi){
+                //             this.filPersons = this.persons.filter((p)=>{
+                //             return p.name.indexOf(zhi)!== -1
+                //         })
+                      
+                //         }
+
+                        
+                //     }
+                // }
+            
+            }) 
+            
+            
+            
+        </script>
+    </body>
+</html>

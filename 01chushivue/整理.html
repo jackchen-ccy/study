@@ -1,0 +1,18 @@
+v-text 他会替换节点中的内容
+       与插值语法不同
+v-html 他会替换节点中的内容，并且支持结构的解析，例如一些标签
+        ！！有安全性问题
+v-cloak 
+        <!-- 一旦vue介入，就会删除,可以将等待js阻塞时，显示的代码不显示
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+<div>
+    <h2 v-cloak>{{name}}</h2>
+</div> -->
+
+js阻塞： js加载不出来下面的代码都没法运行。
+
+v-once

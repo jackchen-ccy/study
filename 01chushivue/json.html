@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <script type="text/javascript">
+        // 把对象转成字符串 JSON
+        // javascript Object Notation JS对象表示法
+        // JSON字符串中的属性名必须加双引号
+        // 分类：
+        //     1.对象 {}
+        //     2.数组 []
+        // JSON中允许的值，
+        //     1.字符串
+        //     2.数值
+        //     3.布尔值
+        //     4.null
+        //     5.对象（普通对象，不包括函数）
+        //     6.数组
+        var obj='{"name":"孙悟空","age":18,"gender":"男"}'
+        var obj1={"name":"孙悟空","age":18,"gender":"男"}
+        /*
+        将JSON转换为js中的对象
+        JSON可以实现互相转换
+        JSON.parse()
+            -可以将JSON字符串转换为js
+            -需要一个JSON字符串做参数，会返回一个js对象
+        JSON.S=stringify()
+            -可以将js字符串转换为JSON
+            -需要一个js对象做参数，会返回一个JSON字符串
+        eval()
+            -这个函数可以用来执行一段字符串类型的js代码
+            可以用来兼容ie7以下的
+            执行的字符串中如果含有{}，它会将{}当成代码块，
+            如果不需要将其当成一个代码块，则需要在字符串前后各添加一个（）
+        如果需要兼容IE7以下的JSON操作，则通过引入一个外部的js文件来处理
+        <script type="text/javascript" src="js/json2.js">/script>
+        */
+       
+        var obj2=eval("("+obj+")");
+        var o=JSON.parse(obj);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
